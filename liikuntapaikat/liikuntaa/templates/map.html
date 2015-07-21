@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>Liikuntapaikat - Helsinki, Espoo, Vantaa, Kauniainen</title>
+	<meta charset="UTF-8">
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+
+	{% load staticfiles %}
+	
+	<!-- Leaflet and proj4 libraries -->
+	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+	<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.3/proj4.js"></script>
+    
+    <!-- MapBox -->
+    <link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.9/mapbox.css' rel='stylesheet' />
+    <script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.9/mapbox.js'></script>
+    
+    <!-- Custom CSS -->
+    <link href="{% static "liikuntaa/css/style.css" %}" rel="stylesheet">
+    
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+        <!-- Leaflet panel CSS -->
+    <link href="{% static "liikuntaa/scripts/leaflet-panel-layers-master/dist/leaflet-panel-layers.src.css" %}" rel="stylesheet">
+    <link href="{% static "liikuntaa/scripts/leaflet-panel-layers-master/examples/icons.css" %}" rel="stylesheet">
+
+</head>
+
+<body>
+    
+    <!-- Menu for filtering 
+    <nav id='menu-ui' class='menu-ui'></nav>
+    -->    
+    
+    <!--
+    <nav class='menu-ui'>
+        <a href='#' class='active' id='filter-all'>Kaikki</a>
+        <a href='#' id='filter-uimarannat'>Uimarannat</a>
+        <a href='#' id='filter-ulkoliikuntapaikat'>Ulkoliikuntapaikat</a>
+    </nav>
+    -->
+
+    <!-- Page Content -->
+    <div id="map" class="map"></div>
+    <!-- /#page-content-wrapper -->
+
+
+    
+    <!-- Page scripts, folder is under staticfiles -->
+    <script src="{% static "liikuntaa/scripts/map.js" %}"></script>
+    <script src="{% static "liikuntaa/scripts/leaflet-panel-layers.src.js" %}"></script>
+    <script src="{% static "liikuntaa/scripts/Leaflet.MakiMarkers.js" %}"></script>
+        
+
+    
+    <!-- Leaflet Providers -->
+    <script src="{% static "liikuntaa/scripts/leaflet-providers-master/leaflet-providers.js" %}"></script>
+</body>
+</html>
