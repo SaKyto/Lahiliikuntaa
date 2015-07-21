@@ -24,7 +24,7 @@ liikunta_mapping = {
 }
 
 ''' Path, HARD-CODED '''
-liikuntapaikat = os.path.abspath(os.path.join(os.path.dirname(__file__), 'data/lipas/Lipas_umr_ulp_espoo_hki_kaun_vantaa.shp'))
+liikuntapaikat = os.path.abspath(os.path.join(os.path.dirname(__file__), 'data/lipas/Lipas_lisaa_espoo_hki_kaun_vantaa_wgs84.shp'))
 
 def run(verbose=True):
     lm = LayerMapping(LiikuntaPaikat, liikuntapaikat, liikunta_mapping,
