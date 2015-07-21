@@ -4,7 +4,7 @@
 var bound_sw = [60.0, 24.2];
 var bound_ne = [60.5, 25.7];
 
-// Add basemap and map settings.
+// Add custom basemap and map settings.
 L.mapbox.accessToken = 'pk.eyJ1IjoiYmVsZjUiLCJhIjoieWo2RGFFRSJ9.cPBUdeKuql4tG_5ZYzXx2w';
 var map = L.mapbox.map('map', 'belf5.m8829b1a', {
         maxZoom: 18, // Zoom in
@@ -17,38 +17,13 @@ var map = L.mapbox.map('map', 'belf5.m8829b1a', {
 var bounds = L.latLngBounds(bound_sw, bound_ne);
 map.setMaxBounds(bounds);
 
-// filters
-/*
-uimarannat = document.getElementById('uimarannat'),
-ulkoliikuntapaikat = document.getElementById('ulkoliikuntapaikat'),
-all = document.getElementById('all');
 
-uimarannat.onclick = function(e) {
-    all.className = '';
-    this.className = 'active';
-    // The setFilter function takes a GeoJSON feature object
-    // and returns true to show it or false to hide it.
-    map.featureLayer.setFilter(function(f) {
-        return f.properties['marker-symbol'] === 'fast-food';
-    });
-    return false;
-};
-
-all.onclick = function() {
-    food.className = '';
-    this.className = 'active';
-    map.featureLayer.setFilter(function(f) {
-        // Returning true for all markers shows everything.
-        return true;
-    });
-    return false;
-};
-*/
-
-// Marker options, 1
+// MARKER OPTIONS //
+// TODO: Use dictionary Move to external file?
+// Marker options, ulkokuntoilupaikat
 var geojsonMarkerOptions = {
     radius: 6,
-    fillColor: "#ff7800",
+    fillColor: "#b15928",
     color: "#000",
     weight: 1,
     opacity: 1,
@@ -58,7 +33,7 @@ var geojsonMarkerOptions = {
 // Marker options, uimaranta
 var uimarantaMarkerOptions = {
     radius: 6,
-    fillColor: "#3333FF",
+    fillColor: "#a6cee3",
     color: "#000",
     weight: 1,
     opacity: 1,
@@ -67,7 +42,7 @@ var uimarantaMarkerOptions = {
 
 var uimapaikkaMarkerOptions = {
     radius: 6,
-    fillColor: "#0BB5FF",
+    fillColor: "#1f78b4",
     color: "#000",
     weight: 1,
     opacity: 1,
@@ -76,7 +51,7 @@ var uimapaikkaMarkerOptions = {
 
 var uimahalliMarkerOptions = {
     radius: 6,
-    fillColor: "#F88D6C",
+    fillColor: "#6a3d9a",
     color: "#000",
     weight: 1,
     opacity: 1,
@@ -86,7 +61,7 @@ var uimahalliMarkerOptions = {
 // Marker options, uimaranta
 var lahiliikuntaMarkerOptions = {
     radius: 6,
-    fillColor: "#F89FE9",
+    fillColor: "#33a02c",
     color: "#000",
     weight: 1,
     opacity: 1,
@@ -95,7 +70,7 @@ var lahiliikuntaMarkerOptions = {
 
 var pallokenttaMarkerOptions = {
     radius: 6,
-    fillColor: "#CF581D",
+    fillColor: "#fb9a99",
     color: "#000",
     weight: 1,
     opacity: 1,
@@ -104,7 +79,7 @@ var pallokenttaMarkerOptions = {
 
 var kuntosaliMarkerOptions = {
     radius: 6,
-    fillColor: "#9FF8AE",
+    fillColor: "#b2df8a",
     color: "#000",
     weight: 1,
     opacity: 1,
@@ -114,7 +89,7 @@ var kuntosaliMarkerOptions = {
 
 var koripallokenttaMarkerOptions = {
     radius: 6,
-    fillColor: "#F88D6C",
+    fillColor: "#b15928",
     color: "#000",
     weight: 1,
     opacity: 1,
@@ -123,7 +98,7 @@ var koripallokenttaMarkerOptions = {
 
 var tenniskenttaMarkerOptions = {
     radius: 6,
-    fillColor: "#CC0066",
+    fillColor: "#fdbf6f",
     color: "#000",
     weight: 1,
     opacity: 1,
@@ -132,7 +107,7 @@ var tenniskenttaMarkerOptions = {
 
 var lentopallokenttaMarkerOptions = {
     radius: 6,
-    fillColor: "#7A6CF8",
+    fillColor: "#e31a1c",
     color: "#000",
     weight: 1,
     opacity: 1,
@@ -141,7 +116,7 @@ var lentopallokenttaMarkerOptions = {
 
 var beachvolleykenttaMarkerOptions = {
     radius: 6,
-    fillColor: "#CC9900",
+    fillColor: "#ffff99",
     color: "#000",
     weight: 1,
     opacity: 1,
@@ -163,6 +138,7 @@ function iconByName(name) {
 }
 
 
+/* Test functions for markers
 function featureToMarker(feature, latlng) {
 	return L.marker(latlng, {
 		icon: L.divIcon({
@@ -183,59 +159,14 @@ function featureToMarker_basic(feature, latlng) {
 		icon: L.MakiMarkers.icon({icon: "circle", color: "#62c462", size: "l"})
 	});
 }
-
-
-/*
-$('.menu-ui a').on('click', function() {
-    // For each filter link, get the 'data-filter' attribute value.
-    var filter = $(this).data('filter');
-    $(this).addClass('active').siblings().removeClass('active');
-    map.geoJsonLayer.setFilter(function(f) {
-        // If the data-filter attribute is set to "all", return
-        // all (true). Otherwise, filter on markers that have
-        // a value set to true based on the filter name.
-        return (filter === 'all') ? true : f.properties[tyyppi] === '3220';
-    });
-    return false;
-});
 */
 
-/*
-//WORKING
-// Get all points of interest initially
-$.ajax({
-    type: 'GET',
-    dataType : 'json',
-    //jsonpCallback : 'getJson',
-    url: 'all',
-
-    success: function (data) {
-        var geoJsonLayer = L.geoJson(data, {
-            onEachFeature: onEachFeature,
-            pointToLayer: function (feature, latlng) {
-                return L.circleMarker(latlng, geojsonMarkerOptions);
-            }
-        }).addTo(map);
-    }
-});
-
-*/
-
-
+// Fetch all and create according GeoJSON layers by filtering. Also create circlemarkers.
 var promise = $.getJSON("all");
     promise.then(function(data) {
         // var kaikkipaikat = L.geoJson(data);
-        
-        // Create GeoJSON layer 1
+    
         /*
-        var ulkoliikuntapaikat = {
-            "Ulkoliikuntapaikat": L.geoJson(data, {
-                filter: function(feature, layer) {
-                    return feature.properties.tyyppikoodi == "1130";
-                }
-            })
-        };
-          
         // Create GeoJSON layer 2
         var uimarannat = {
             "Uimarannat": L.geoJson(data, {
@@ -362,7 +293,7 @@ var promise = $.getJSON("all");
         
         
         
-        // Switchable base layers
+        // Create Switchable Basemaps as a group
         var baseLayers = [
             {
                 group: "Taustakartat",
@@ -406,7 +337,7 @@ var promise = $.getJSON("all");
             }
         ];
         
-        // Togglable layers    
+        // Create togglable layers - overlay, as theme groups
         var overLayers = [
             {
                 group: "Uimapaikat",
@@ -499,10 +430,6 @@ var promise = $.getJSON("all");
         
         // Cr
         //L.control.layers(ulkoliikuntapaikat, uimarannat).addTo(map);
-    
-        //WORKING, not needed?
-        //ulkoliikuntapaikat.addTo(map);
-        //uimarannat.addTo(map);
         
 
     });
