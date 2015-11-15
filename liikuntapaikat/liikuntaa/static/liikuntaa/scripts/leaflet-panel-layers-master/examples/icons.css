@@ -19,8 +19,46 @@
 	background: url('../images/icons/parking.png') center center no-repeat;
 }
 .icon-drinking_water {
-	background: url('../images/icons/drinking_water.png') center center no-repeat;
+	//background: url('../images/icons/drinking_water.png') center center no-repeat;
+    background: #000;
 }
+.icon-ulkokuntoilupaikat {
+    background: #b15928;
+}
+.icon-lahiliikuntapaikat {
+    background: #33a02c;
+}
+.icon-kuntosalit {
+    background: #fb9a99;
+}
+
+
+.icon-uimarannat {
+    background: #1f78b4;
+}
+.icon-uimapaikat {
+    background: #cab2d6;
+}
+.icon-uimahallit {
+    background: #6a3d9a;
+}
+
+.icon-koripallokentat {
+    background: #ff7f00;
+}
+.icon-pallokentat {
+    background: #b2df8a;
+}
+.icon-tenniskentat {
+    background: #fdbf6f;
+}
+.icon-lentopallokentat {
+    background: #B329B0;
+}
+.icon-beachvolleykentat {
+    background: #ffff99;
+}
+
 
 /* MARKERS */
 .leaflet-marker-icon {
